@@ -1,16 +1,22 @@
 import pyuac
-from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipeline
+import EmailClassifier as Classifier
+
 
 def main():
-    tokenizer = AutoTokenizer.from_pretrained("cardiffnlp/twitter-roberta-base-sentiment-latest")
-    model = AutoModelForSequenceClassification.from_pretrained("cardiffnlp/twitter-roberta-base-sentiment-latest")
+    text = []
+    while (True):
+        t = input("Please enter text to be classified (Enter ` when done): ")
+        t += (" ")
+        if (t == "` "):
+            break
+        text.append(t)
 
-    inputs = tokenizer("We are very happy to show you the 🤗 Transformers library.")
-    print(inputs)
+    instr = "".join(text)
+    print("INPUT STRING: \t" + instr)
+    print("Classification: " + Classifier.predict(instr))
 
-    classifier = pipeline("sentiment-analysis", model=model, tokenizer=tokenizer)
-    classifier("We are very happy to show you the 🤗 Transformers library.")
 
+# RUN SCRIPT AS ADMIN
 if __name__ == "__main__":
     if not pyuac.isUserAdmin():
         print("Re-launching as admin!")
