@@ -1,3 +1,5 @@
+import time
+
 import pyuac
 import EmailClassifier as Classifier
 
@@ -14,6 +16,7 @@ def main():
     instr = "".join(text)
     print("INPUT STRING: \t" + instr)
     print("Classification: " + Classifier.predict(instr))
+    time.sleep(5)
 
 
 # RUN SCRIPT AS ADMIN
