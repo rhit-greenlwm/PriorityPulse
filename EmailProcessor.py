@@ -7,11 +7,11 @@ class Email:
         self.text = text
         self.date = date
 
-
     def getText(self):
         return self.text
     def getDate(self):
         return self.date
+
 def loadEmails():
     path = 'emails/'  # set this to "./" if in current directory
     emails= []

@@ -1,6 +1,8 @@
 import time
 import pyuac
 import EmailClassifier as Classifier
+import EmailProcessor as Loader
+from EmailProcessor import Email
 
 def preprocess(text):
     new_text = []
@@ -26,9 +28,14 @@ def get_sentiment(text):
     scores = {"negative": output[0], "neutral": output[1], "positive": output[2]}
     return Sentiment(scores)
 
-def main():
+def get_urgency(email):
     pass
 
+def main():
+    emails = Loader.loadEmails()
+    for email in emails:
+        urg = get_urgency(email)
+        sent = get_sentiment(email.getText())
 
 # RUN SCRIPT AS ADMIN
 if __name__ == "__main__":
