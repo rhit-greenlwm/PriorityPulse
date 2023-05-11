@@ -35,6 +35,6 @@ def loadEmails():
         for line in text:
             if (line != ""):
                 newText.append(line)
-        emails.append(Email('\n'.join(newText), msg.get('Date')))
+        emails.append(Email('\n'.join(newText), msg.get('Date'), msg.get('Subject')))
     return emails
 loadEmails()
