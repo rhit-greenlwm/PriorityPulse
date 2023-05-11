@@ -13,7 +13,7 @@ class Email:
     def getDate(self):
         return self.date
 def loadEmails():
-    path = './testEmails/'  # set this to "./" if in current directory
+    path = 'emails/'  # set this to "./" if in current directory
     emails= []
     eml_files = glob.glob(path + '*.eml')  # get all .eml files in a list
     for eml_file in eml_files:
