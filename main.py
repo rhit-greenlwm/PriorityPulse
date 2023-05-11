@@ -36,6 +36,7 @@ def main():
     for email in emails:
         urg = get_urgency(email)
         sent = get_sentiment(email.getText())
+        print(f"Subject: {email.getSubject()}, From: {email.getFrom()}, Urgency: {urg}, Sentiment: {sent}")
 
 # RUN SCRIPT AS ADMIN
 if __name__ == "__main__":
