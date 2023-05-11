@@ -1,11 +1,16 @@
-
 from email import policy
 from email.parser import BytesParser
 import glob
+
+
 class Email:
-    def __init__(self, text,date):
+    def __init__(self, text, date, subject):
         self.text = text
         self.date = date
+        self.subject = subject
+
+    def getSubject(self):
+        return self.subject
 
     def getText(self):
         return self.text

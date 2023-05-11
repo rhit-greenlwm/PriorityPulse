@@ -1,0 +1,230 @@
+Delivered-To: cperryoh@gmail.com
+Received: by 2002:a2e:9994:0:0:0:0:0 with SMTP id w20csp1341387lji;
+        Tue, 9 May 2023 22:18:00 -0700 (PDT)
+X-Received: by 2002:a5e:a914:0:b0:763:7471:ea18 with SMTP id c20-20020a5ea914000000b007637471ea18mr14176752iod.4.1683695880170;
+        Tue, 09 May 2023 22:18:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1683695880; cv=none;
+        d=google.com; s=arc-20160816;
+        b=oYFhIDud0isaEXXlfSWRIJ7JryC9ZQtja2JbGhMPhGBwkPa89Nqj2AXVh2ZpKcNd5a
+         tmjFNpHIAo5iMpO9Tui4zjzdWcZwcvDHderIPlVyf5CLwxtEY/PIEXDypL175VUpfSmz
+         WhOIiX455XClVOAMC/WehfB2uetFHPA1N5jwRXmAPF1vNXJNHW/RzN9ePNn9Mh0Vp09/
+         AumIlMC0TefbenIUhSznO234yknCLtitnQcLMet5u9qq4g78WoYogywnIFkKGWEP/Goc
+         N9RPjU6FRppC2tjL8tnTR36jFPRLUoU9P2xo8gKHnTjyiLG2D2ylM0judbcQmxLLgJP4
+         fvlg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:in-reply-to:references:message-id:date:subject:mime-version:from
+         :content-transfer-encoding:dkim-signature;
+        bh=P6JhFOtJQdQwyWmj527MhZEEgflurnMMskMOS0zZYZ4=;
+        b=0u0Nw4jmAfLXXFBcDtFlkozIIOIwjRtOdYzHsChQ8YC35twSu/XVFEzFJVh7eDbSTA
+         e1swxRFROF/yBZQBAmVmXXiXaVPsnwHpvg6c+2RLwTRsbsmBA66E1vI1iLLR3dxmFZOo
+         mQy886vNUAFyfcEmrWKWnz8to7tLqTF4kUX18XubTcNMCOZsHey15+7PyNKT3zZGHUKO
+         xvHGz2msMn/+rzW3I0jt4x2I8AWsHUJwSe256FYH5zZLuiscP7j1CEtGFfJlmDQpnr36
+         tMnGUg8UnuRdcCL6P4k3BHnblG/9lT82J/YlJtGgRh/z0wN8DgA5a7F/GmhtCCTamEps
+         g4Yw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@pierceaerospace-net.20221208.gappssmtp.com header.s=20221208 header.b=0rh55LrP;
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of aaron@pierceaerospace.net) smtp.mailfrom=aaron@pierceaerospace.net
+Return-Path: <aaron@pierceaerospace.net>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id y16-20020a5d9150000000b00761cd97fd2csor4025491ioq.9.2023.05.09.22.17.59
+        for <cperryoh@gmail.com>
+        (Google Transport Security);
+        Tue, 09 May 2023 22:18:00 -0700 (PDT)
+Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of aaron@pierceaerospace.net) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@pierceaerospace-net.20221208.gappssmtp.com header.s=20221208 header.b=0rh55LrP;
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of aaron@pierceaerospace.net) smtp.mailfrom=aaron@pierceaerospace.net
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pierceaerospace-net.20221208.gappssmtp.com; s=20221208; t=1683695879; x=1686287879;
+        h=to:in-reply-to:references:message-id:date:subject:mime-version:from
+         :content-transfer-encoding:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=P6JhFOtJQdQwyWmj527MhZEEgflurnMMskMOS0zZYZ4=;
+        b=0rh55LrPkTNLAZCk2dqXEAXFLLI8myXXd2MI+2XTCfX85AzQJhx7tV0kM9ZmcMvGns
+         iCjrRWj7YCZSTU7s6/vVMRIdzOrWJRAqSoCAI+kMgMg6UaZiXGDg+ik07NCv3/pH5xXx
+         etc7ptb3VGeqxrkaMhVqiIj0vUbZXEIW6UZCmD9TyumqoWEVYpNfmmiTjYjrfqsxvVz5
+         RCFPQ6gtzmAAccMaRiNLETCoDngI5ipMbz0dxjAMahaRjR7ByqhbWB3VEcTznidRk37N
+         zIW2DL+CRWONHaYlBcplx2pJVs2KilU7sXhZly52OYGSxIdsmEceW/tvRV/YDWe6nxK6
+         fdew==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20221208; t=1683695879; x=1686287879;
+        h=to:in-reply-to:references:message-id:date:subject:mime-version:from
+         :content-transfer-encoding:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=P6JhFOtJQdQwyWmj527MhZEEgflurnMMskMOS0zZYZ4=;
+        b=TbchKABvOMK9yHQpadpdzJwNBwmHwI2J8l4zpOalm4mzL9D6qPv19yh80zZ5XDhjoo
+         lnGd7gsc9uMIYkWC1XoXwdLwWI8h1Vq79BqIF8VzgaWvuN8X/I2V5KvRaUyTmJTLoh1p
+         Y1zC0VWBA1Yvx+ld22vfc29T9zhJEfIkgRNzuPJ03wONeicue37VZoPZSdO2/LqUcYb7
+         snw4GYNpQGkm8/rilZzwWu9VLNx+hgVuwfjNwFEhGu/BpFr93mpLAndbDDQVy5Uo65eB
+         DwZWdR1HBejrlEumXO8jG1AYwRovhVZO7+5qVULNSO7tQ97Wmr7pVO04GsS9LmVudU7c
+         uyXA==
+X-Gm-Message-State: AC+VfDwUIMebHzAV6w+zr5QSGPgGV0U6OBh5uZvlz6dPg/NlyvdcXOKV
+	MIsTN/YDVJEXmzeNgv/qnNkC3B17QWLKqNthPXB9YQ==
+X-Google-Smtp-Source: ACHHUZ7NRl1n6K+cn7ZHnyXVGMhFL7ZBdkj6+n3sGRGbvWzkQJC+oFbZgjPcmgDeGF3zTofq+MQYeQ==
+X-Received: by 2002:a6b:6402:0:b0:760:ebf0:bdfa with SMTP id t2-20020a6b6402000000b00760ebf0bdfamr13485379iog.2.1683695879221;
+        Tue, 09 May 2023 22:17:59 -0700 (PDT)
+Return-Path: <aaron@pierceaerospace.net>
+Received: from smtpclient.apple ([150.252.244.3])
+        by smtp.gmail.com with ESMTPSA id l1-20020a0566380d8100b0040b1ecc3ec4sm3261511jaj.11.2023.05.09.22.17.58
+        for <cperryoh@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 09 May 2023 22:17:58 -0700 (PDT)
+Content-Type: multipart/alternative; boundary=Apple-Mail-1CCBE9E2-BDD0-4D0D-94B0-DA50E3BBBF00
+Content-Transfer-Encoding: 7bit
+From: Aaron Pierce <aaron@pierceaerospace.net>
+Mime-Version: 1.0 (1.0)
+Subject: Re: Pierce Aerospace Internship Offer
+Date: Tue, 9 May 2023 23:17:44 -0600
+Message-Id: <9C87CEE4-01C9-4907-9F6D-3E34D3DC632F@pierceaerospace.net>
+References: <CAFezO=cpxc-oyW4Fd8JDNQboegG9jm+cn6A-3VnimO2JX2PS3g@mail.gmail.com>
+In-Reply-To: <CAFezO=cpxc-oyW4Fd8JDNQboegG9jm+cn6A-3VnimO2JX2PS3g@mail.gmail.com>
+To: Cole Perry <cperryoh@gmail.com>
+X-Mailer: iPhone Mail (20E252)
+
+
+--Apple-Mail-1CCBE9E2-BDD0-4D0D-94B0-DA50E3BBBF00
+Content-Type: text/html;
+	charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html><head><meta http-equiv=3D"content-type" content=3D"text/html; charset=3D=
+utf-8"></head><body dir=3D"auto">Hi Cole,<div><br></div><div>You=E2=80=99ve n=
+ot missed it. We=E2=80=99re at the biggest drone conference of the year. We=E2=
+=80=99ll get it over to you soon. Thank you for checking in!</div><div><br><=
+/div><div><br><br><div dir=3D"ltr">Aaron Pierce<div>CEO</div><div>Pierce Aer=
+ospace</div><div>aaron@pierceaerospace.net</div></div><div dir=3D"ltr"><br><=
+blockquote type=3D"cite">On May 9, 2023, at 22:49, Cole Perry &lt;cperryoh@g=
+mail.com&gt; wrote:<br><br></blockquote></div><blockquote type=3D"cite"><div=
+ dir=3D"ltr">=EF=BB=BF<div dir=3D"ltr">Hello Aaron,<div>I wanted to check in=
+ with you regarding&nbsp;the further paperwork for my internship this summer=
+. I didn't&nbsp;get an email from you so far, and I wanted to check with&nbs=
+p;you to make sure I didn't&nbsp;miss it.&nbsp;</div><div><br></div><div>Tha=
+nks,</div><div>Cole Perry</div></div><br><div class=3D"gmail_quote"><div dir=
+=3D"ltr" class=3D"gmail_attr">On Mon, May 1, 2023 at 3:36=E2=80=AFPM Aaron P=
+ierce &lt;<a href=3D"mailto:aaron@pierceaerospace.net">aaron@pierceaerospace=
+.net</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"marg=
+in:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex=
+"><div dir=3D"ltr"><div>Outstanding!<br><br></div><div>Received and I'll be b=
+ack in touch with some additional paperwork soon.</div><div><br></div><div>R=
+espectfully,<br></div><div><br clear=3D"all"><div><div><div dir=3D"ltr"><div=
+ dir=3D"ltr"><div><div dir=3D"ltr"><div><div dir=3D"ltr"><div><div dir=3D"lt=
+r"><div><div dir=3D"ltr"><div><div dir=3D"ltr"><div><div dir=3D"ltr"><div><d=
+iv dir=3D"ltr"><div dir=3D"ltr"><div>Aaron Pierce</div><div>CEO</div><div di=
+r=3D"ltr"><a href=3D"http://www.pierceaerospace.net" target=3D"_blank">Pierc=
+e Aerospace</a></div><div dir=3D"ltr"><br><div><font size=3D"1"><span style=3D=
+"font-family:&quot;Helvetica Neue&quot;;color:rgb(65,65,65)">This email is i=
+ntended for the recipient(s) and may contain confidential information or mat=
+erial. If you received this correspondence in error please delete this email=
+ and any attachments</span><span style=3D"font-family:Arial;color:rgb(26,26,=
+26)">&nbsp;</span><span style=3D"font-family:&quot;Helvetica Neue&quot;;colo=
+r:rgb(65,65,65)">and notify the sender.</span><br></font></div></div></div><=
+/div></div></div></div></div></div></div></div></div></div></div></div></div=
+></div></div></div></div><br></div></div></div><br><div class=3D"gmail_quote=
+"><div dir=3D"ltr" class=3D"gmail_attr">On Fri, Apr 28, 2023 at 8:25=E2=80=AF=
+PM Cole Perry &lt;<a href=3D"mailto:cperryoh@gmail.com" target=3D"_blank">cp=
+erryoh@gmail.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" s=
+tyle=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padd=
+ing-left:1ex"><div dir=3D"ltr">Hello Aaron,<br>I again want to thank you for=
+ this opportunity and I want to let you know that I've decided to take the o=
+ffer, I have attached the signed documents below. Thank you very much for th=
+is opportunity. I'm excited to join the team.<br><br>Sincerely,<div>Cole Per=
+ry</div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail=
+_attr">On Fri, Apr 28, 2023 at 12:41=E2=80=AFPM Aaron Pierce &lt;<a href=3D"=
+mailto:aaron@pierceaerospace.net" target=3D"_blank">aaron@pierceaerospace.ne=
+t</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:=
+0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><=
+div dir=3D"ltr"><div>Hi Cole,<br></div><br><p style=3D"color:rgb(14,16,26);b=
+ackground:transparent;margin-top:0pt;margin-bottom:0pt"><span style=3D"color=
+:rgb(14,16,26);background:transparent;margin-top:0pt;margin-bottom:0pt">Than=
+k you for the note, and we look forward to your decision.</span></p><p style=
+=3D"color:rgb(14,16,26);background:transparent;margin-top:0pt;margin-bottom:=
+0pt"><br></p><p style=3D"color:rgb(14,16,26);background:transparent;margin-t=
+op:0pt;margin-bottom:0pt"><span style=3D"color:rgb(14,16,26);background:tran=
+sparent;margin-top:0pt;margin-bottom:0pt">I wasn't in your initial interview=
+, so I want to share this additional information. Some of the intangible exp=
+eriences you'll receive at Pierce Aerospace includes entrepreneurial mentors=
+hip and access to guest mentors as a part of how we're evolving our internsh=
+ip program. The objective here is to broaden your college experience, widen y=
+our network, and give you an authentic startup experience without risking mo=
+rtgaging your home or closing out a 401K (a common high-risk financial maneu=
+ver for founders). This internship will allow you to get experiences beyond s=
+tandard internships, put you in a position to lead, and help you learn if en=
+trepreneurship is for you - a question that has no right or wrong answer, bu=
+t it's a question that is only answered through experience.</span></p><p sty=
+le=3D"color:rgb(14,16,26);background:transparent;margin-top:0pt;margin-botto=
+m:0pt"><br></p><p style=3D"color:rgb(14,16,26);background:transparent;margin=
+-top:0pt;margin-bottom:0pt"><span style=3D"color:rgb(14,16,26);background:tr=
+ansparent;margin-top:0pt;margin-bottom:0pt">There are others we've been scou=
+ting but we made an offer to you. The offer expires at&nbsp;</span><strong s=
+tyle=3D"color:rgb(14,16,26);background:transparent;margin-top:0pt;margin-bot=
+tom:0pt"><span style=3D"color:rgb(14,16,26);background:transparent;margin-to=
+p:0pt;margin-bottom:0pt">5:00 PM ET on Monday, May 1st, 2023</span></strong>=
+<span style=3D"color:rgb(14,16,26);background:transparent;margin-top:0pt;mar=
+gin-bottom:0pt">. We look forward to your response.</span></p><p style=3D"co=
+lor:rgb(14,16,26);background:transparent;margin-top:0pt;margin-bottom:0pt"><=
+br></p><p style=3D"color:rgb(14,16,26);background:transparent;margin-top:0pt=
+;margin-bottom:0pt"><span style=3D"color:rgb(14,16,26);background:transparen=
+t;margin-top:0pt;margin-bottom:0pt">Thank you,</span></p><div><br></div><div=
+><br clear=3D"all"><div><div><div dir=3D"ltr"><div dir=3D"ltr"><div><div dir=
+=3D"ltr"><div><div dir=3D"ltr"><div><div dir=3D"ltr"><div><div dir=3D"ltr"><=
+div><div dir=3D"ltr"><div><div dir=3D"ltr"><div><div dir=3D"ltr"><div dir=3D=
+"ltr"><div>Aaron Pierce</div><div>CEO</div><div dir=3D"ltr"><a href=3D"http:=
+//www.pierceaerospace.net" target=3D"_blank">Pierce Aerospace</a></div><div d=
+ir=3D"ltr"><br><div><font size=3D"1"><span style=3D"font-family:&quot;Helvet=
+ica Neue&quot;;color:rgb(65,65,65)">This email is intended for the recipient=
+(s) and may contain confidential information or material. If you received th=
+is correspondence in error please delete this email and any attachments</spa=
+n><span style=3D"font-family:Arial;color:rgb(26,26,26)">&nbsp;</span><span s=
+tyle=3D"font-family:&quot;Helvetica Neue&quot;;color:rgb(65,65,65)">and noti=
+fy the sender.</span><br></font></div></div></div></div></div></div></div></=
+div></div></div></div></div></div></div></div></div></div></div></div></div>=
+<br></div></div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D=
+"gmail_attr">On Fri, Apr 28, 2023 at 12:20=E2=80=AFPM Cole Perry &lt;<a href=
+=3D"mailto:cperryoh@gmail.com" target=3D"_blank">cperryoh@gmail.com</a>&gt; w=
+rote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px=
+ 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D"=
+ltr"><div>Dear Aaron,</div><div>I would like to thank you again for extendin=
+g an internship&nbsp;offer at pierce aerospace. I was thrilled to receive&nb=
+sp;this offer and appreciate the time and effort you and Gary took in evalua=
+ting my application and interviewing me.</div><div><br></div><div>I feel tha=
+t I need a little more time to fully evaluate&nbsp;the offer and details of t=
+he position before&nbsp;making a final decision. I will be able to get back&=
+nbsp;to you by Monday with&nbsp;my decision.&nbsp;</div><div><br></div><div>=
+I am genuinely interested in the position&nbsp;and would like to ensure that=
+ I make the best decision&nbsp;possible for everyone involved. I appreciate y=
+our understanding.</div><div><br></div><div>Thanks,<br>Cole Perry&nbsp;</div=
+></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">=
+On Thu, Apr 27, 2023 at 5:38=E2=80=AFPM Aaron Pierce &lt;<a href=3D"mailto:a=
+aron@pierceaerospace.net" target=3D"_blank">aaron@pierceaerospace.net</a>&gt=
+; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0=
+px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D=
+"ltr">Cole,<br><br><div>We are pleased to offer you a position as an Enginee=
+ring Intern at=20
+Pierce Aerospace for the Summer of 2023. Attached is an offer letter=20
+with further details.<br><br>Please note that we work in a hybrid=20
+environment covering work at our office at the Indiana IoT Lab=20
+in Fishers, IN, some off-site work, and remote work.</div><div><br></div><di=
+v>We are happy to have you aboard and look forward to working with you this S=
+ummer. Please let me know if you have any questions.</div><div><br></div><di=
+v>Respectfully,<br><br></div><br clear=3D"all"><div><div><div dir=3D"ltr"><d=
+iv dir=3D"ltr"><div><div dir=3D"ltr"><div><div dir=3D"ltr"><div><div dir=3D"=
+ltr"><div><div dir=3D"ltr"><div><div dir=3D"ltr"><div><div dir=3D"ltr"><div>=
+<div dir=3D"ltr"><div dir=3D"ltr"><div>Aaron Pierce</div><div>CEO</div><div d=
+ir=3D"ltr"><a href=3D"http://www.pierceaerospace.net" target=3D"_blank">Pier=
+ce Aerospace</a></div><div dir=3D"ltr"><br><div><font size=3D"1"><span style=
+=3D"font-family:&quot;Helvetica Neue&quot;;color:rgb(65,65,65)">This email i=
+s intended for the recipient(s) and may contain confidential information or m=
+aterial. If you received this correspondence in error please delete this ema=
+il and any attachments</span><span style=3D"font-family:Arial;color:rgb(26,2=
+6,26)">&nbsp;</span><span style=3D"font-family:&quot;Helvetica Neue&quot;;co=
+lor:rgb(65,65,65)">and notify the sender.</span><br></font></div></div></div=
+></div></div></div></div></div></div></div></div></div></div></div></div></d=
+iv></div></div></div></div></div></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+</blockquote></div>
+</div></blockquote></div></body></html>=
+
+--Apple-Mail-1CCBE9E2-BDD0-4D0D-94B0-DA50E3BBBF00--
