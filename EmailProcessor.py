@@ -34,3 +34,4 @@ def loadEmails():
                 newText.append(line)
         emails.append(Email('\n'.join(newText),msg.get('Date')))
     return emails
+loadEmails()
