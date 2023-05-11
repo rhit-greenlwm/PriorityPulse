@@ -15,6 +15,7 @@ class Sentiment:
         self.negative = scores["negative"]
         self.neutral = scores["neutral"]
         self.positive = scores["positive"]
+        self.scores = scores
 
     def __str__(self):
         return f"Negative: {self.negative}, Neutral: {self.neutral}, Positive: {self.positive}"
