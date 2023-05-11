@@ -1,8 +1,14 @@
-from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipeline
+from transformers import AutoTokenizer, AutoConfig, AutoModelForSequenceClassification
+from scipy.special import softmax
 
-tokenizer = AutoTokenizer.from_pretrained("cardiffnlp/twitter-roberta-base-sentiment-latest")
-model = AutoModelForSequenceClassification.from_pretrained("cardiffnlp/twitter-roberta-base-sentiment-latest")
-_classifier = pipeline("sentiment-analysis", model=model, tokenizer=tokenizer)
+MODEL = f"cardiffnlp/twitter-roberta-base-sentiment-latest"
+model = AutoModelForSequenceClassification.from_pretrained(MODEL)
+tokenizer = AutoTokenizer.from_pretrained(MODEL)
+config = AutoConfig.from_pretrained(MODEL)
 
 def predict(text):
-    return _classifier(text)[0]['label']
+    encoded_input = tokenizer(text, return_tensors='pt')
+    output = model(**encoded_input)
+    scores = output[0][0].detach().numpy()
+    scores = softmax(scores)
+    return scores
