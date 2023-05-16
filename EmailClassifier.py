@@ -7,6 +7,8 @@ tokenizer = AutoTokenizer.from_pretrained(MODEL)
 config = AutoConfig.from_pretrained(MODEL)
 
 def predict(text):
+    if(len(text)>100):
+        text = text[:100]
     encoded_input = tokenizer(text, return_tensors='pt')
     output = model(**encoded_input)
     scores = output[0][0].detach().numpy()

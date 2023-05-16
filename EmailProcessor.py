@@ -2,22 +2,14 @@
 from email import policy
 from email.parser import BytesParser
 import glob
-
+from bs4 import BeautifulSoup
 
 class Email:
-    def __init__(self, text, date, subject):
+    def __init__(self, text, emailfrom, date, subject):
         self.text = text
+        self.emailfrom = emailfrom
         self.date = date
         self.subject = subject
-
-    def getSubject(self):
-        return self.subject
-
-    def getText(self):
-        return self.text
-
-    def getDate(self):
-        return self.date
 
 
 def loadEmails():
@@ -28,13 +20,28 @@ def loadEmails():
         with open(eml_file, 'rb') as fp:  # select a specific email file from the list
             name = fp.name  # Get file name
             msg = BytesParser(policy=policy.default).parse(fp)
-        text = msg.get_body(preferencelist=('plain')).get_content()
+
+        pretext = msg.get_body(preferencelist=('plain'))
+
+        if(pretext is None):
+            html = msg.get_body(preferencelist=('html')).get_content()
+            soup = BeautifulSoup(html, features="html.parser")
+
+            # kill all script and style elements
+            for script in soup(["script", "style"]):
+                script.extract()  # rip it out
+
+            # get text
+            text = soup.get_text()
+        else:
+            text = pretext.get_content()
+
         fp.close()
         text = text.split("\n")
         newText = []
         for line in text:
             if (line != ""):
                 newText.append(line)
-        emails.append(Email('\n'.join(newText), msg.get('Date'), msg.get('Subject')))
+        emails.append(Email('\n'.join(newText), msg.get('From'), msg.get('Date'), msg.get('Subject')))
     return emails
 loadEmails()

@@ -29,7 +29,7 @@ def get_sentiment(text):
     return Sentiment(scores)
 
 def get_urgency(email):
-    delta = datetime.datetime.now() - datetime.datetime.strptime(email.getDate(), '%a, %d %b %Y %H:%M:%S %z')
+    delta = datetime.datetime.now() - datetime.datetime.strptime(email.date[:-6], '%a, %d %b %Y %H:%M:%S')
     return delta.total_seconds() / 60 / 60
 
 class OutputObject:
@@ -45,10 +45,11 @@ def main():
     out = []
     for email in emails:
         urg = get_urgency(email)
-        sent = get_sentiment(email.getText())
-        out.append(OutputObject(email.getSubject(), email.getFrom(), urg, sent))
+        sent = get_sentiment(email.text)
+        out.append(OutputObject(email.subject, email.emailfrom, urg, sent))
+    out.sort(key=lambda x: x.urgency, reverse=True)
     for email in out:
-        print(f"Subject: {email.subject}, From: {email.sentfrom}, Urgency: {email.urgency}, Sentiment: {email.sentiment}")
+        print(f"Subject: {email.subject}\nFrom: {email.sentfrom}\nUrgency: {email.urgency}\nSentiment: {email.sentiment}\n")
     while True:
         key = input("Press Enter to exit...")
         if key == "":
