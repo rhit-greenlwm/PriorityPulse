@@ -1,4 +1,4 @@
-import time
+import datetime
 import pyuac
 import EmailClassifier as Classifier
 import EmailProcessor as Loader
@@ -29,18 +29,30 @@ def get_sentiment(text):
     return Sentiment(scores)
 
 def get_urgency(email):
-    pass
+    delta = datetime.datetime.now() - datetime.datetime.strptime(email.getDate(), '%a, %d %b %Y %H:%M:%S %z')
+    return delta.total_seconds() / 60 / 60
+
+class OutputObject:
+
+    def __init__(self, subject, sentfrom, urgency, sentiment):
+        self.subject = subject
+        self.sentfrom = sentfrom
+        self.urgency = urgency
+        self.sentiment = sentiment
 
 def main():
     emails = Loader.loadEmails()
+    out = []
     for email in emails:
         urg = get_urgency(email)
         sent = get_sentiment(email.getText())
-        print(f"Subject: {email.getSubject()}, From: {email.getFrom()}, Urgency: {urg}, Sentiment: {sent}")
-        while True:
-            key = input("Press Enter to exit...")
-            if key == "":
-                break
+        out.append(OutputObject(email.getSubject(), email.getFrom(), urg, sent))
+    for email in out:
+        print(f"Subject: {email.subject}, From: {email.sentfrom}, Urgency: {email.urgency}, Sentiment: {email.sentiment}")
+    while True:
+        key = input("Press Enter to exit...")
+        if key == "":
+            break
 
 
 # RUN SCRIPT AS ADMIN
