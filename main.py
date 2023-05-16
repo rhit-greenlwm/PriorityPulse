@@ -37,6 +37,11 @@ def main():
         urg = get_urgency(email)
         sent = get_sentiment(email.getText())
         print(f"Subject: {email.getSubject()}, From: {email.getFrom()}, Urgency: {urg}, Sentiment: {sent}")
+        while True:
+            key = input("Press Enter to exit...")
+            if key == "":
+                break
+
 
 # RUN SCRIPT AS ADMIN
 if __name__ == "__main__":
