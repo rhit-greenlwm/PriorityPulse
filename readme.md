@@ -17,11 +17,11 @@ Priority Pulse is an application that allows you to process .eml files and perfo
 
 1. Clone the repository:
 
-```git clone https://github.com/your-username/priority-pulse.git```
+```git clone https://github.com/your-username/prioritypulse.git```
 
 2. Navigate to the project directory:
 
-```cd priority-pulse```
+```cd prioritypulse```
 
 3. Install the required dependencies using pip:
 
@@ -33,7 +33,7 @@ Priority Pulse is an application that allows you to process .eml files and perfo
 
 2. Run the application:
 
-```python priority_pulse.py```
+```python main.py```
 
 3. The application will process the .eml files, perform priority sorting, and display the sorted emails along with their urgency scores and sentiment analysis results.
 
