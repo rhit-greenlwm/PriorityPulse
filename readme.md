@@ -70,6 +70,6 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 
-If you have any questions or suggestions, feel free to reach out to the project maintainer at [your-email@example.com](mailto:your-email@example.com).
+If you have any questions or suggestions, feel free to reach out to the project maintainer at [greenlwm@rose-hulman.edu](mailto:greenlwm@rose-hulman.edu).
 
 Enjoy using Priority Pulse!
